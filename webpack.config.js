@@ -16,31 +16,47 @@ module.exports = {
     modules: ['node_modules']
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015']
-      }
-    }, {
-      test: /\.html$/,
-      use: [{
-        loader: 'html-loader',
-        options: {
-          minimize: false
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
         }
-      }]
-    }, {
-      test: /\.scss$/,
-      use: [{
-        loader: "style-loader"
       }, {
-        loader: "css-loader"
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: false
+            }
+          }
+        ]
       }, {
-        loader: "sass-loader"
-      }]
-    }]
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              data: '@import "app/variables";',
+              includePaths: [
+                path.join(__dirname, 'src')
+              ]
+            }
+          }
+        ],
+        include: path.join(__dirname, 'src')
+      }
+    ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
@@ -51,6 +67,9 @@ module.exports = {
       {
         from: 'src/index.html',
         to: 'index.html'
+      }, {
+        from: 'src/assets/',
+        to: 'assets/'
       }
     ])
   ],

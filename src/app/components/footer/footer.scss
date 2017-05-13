@@ -1,0 +1,27 @@
+footer {
+  height: 80px;
+  background-color: #333441;
+  text-align: center;
+  line-height: 80px;
+
+  .wrapper {
+    display: inline-block;
+    vertical-align: middle;
+
+    span {
+      color: white;
+      line-height: 80px;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: 'Raleway-Medium';
+
+      @media #{$large-mobile} {
+        display: block;
+
+        &.separator {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,2 +1,11 @@
 body {
+  margin: 0;
+
+  app {
+    display: block;
+
+    input, button {
+      outline: none;
+    }
+  }
 }

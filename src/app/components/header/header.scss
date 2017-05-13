@@ -1,0 +1,96 @@
+header {
+  display: block;
+  background-color: #CE4284;
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  min-height: 403px;
+  line-height: 80vh;
+  text-align: center;
+
+  @media #{$tablet} {
+    height: 100vh;
+    line-height: 100vh;
+  }
+
+  .geek-logo {
+    position: absolute;
+    z-index: 1;
+    top: 35px;
+    left: 40px;
+
+    @media #{$tablet} {
+      top: 30px;
+      left: 30px;
+    }
+    
+    i.logo {
+      display: block;
+      width: 100%;
+      height: 76px;
+      background: url('/assets/images/gl-logo.png') no-repeat center center;
+      background-size: contain;
+
+      @media #{$tablet} {
+        width: 20px;
+        height: 35px;
+      }
+    }
+
+    i.text {
+      margin-top: 11px;
+      display: block;
+      width: 80px;
+      height: 13px;
+      background: url('/assets/images/gl-text.png') no-repeat top center;
+      background-size: contain;
+
+      @media #{$tablet} {
+        display: none;
+      }
+    }
+  }
+
+  .powered-label {
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    right: 40px;
+    color: white;
+    font-family: 'Raleway-SemiBold';
+    font-size: 16px;
+    line-height: 16px;
+
+    @media #{$tablet} {
+      font-size: 14px;
+      line-height: 14px;
+      top: 32px;
+      right: 30px;
+    }
+  }
+
+  .music-search-logo {
+    display: inline-block;
+    vertical-align: middle;
+    background: url('/assets/images/hero-img@2x.png') no-repeat center center;
+    max-width: 550px;
+    width: 100%;
+    height: 403px;
+    background-size: contain;
+
+    @media #{$tablet} {
+      width: 84%;
+    }
+  }
+
+  .scroll-arrow {
+    position: absolute;
+    bottom: 7vh;
+    left: 50%;
+    width: 14px;
+    height: 26px;
+    margin-left: -7px;
+    background: url('/assets/images/Page 1@2x.png') no-repeat center center;
+    background-size: contain;
+  }
+}

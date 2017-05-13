@@ -1,0 +1,35 @@
+// fonts declarations
+@font-face {
+  font-family: 'Raleway-SemiBold';
+  src: url('/assets/fonts/Raleway-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway-Medium';
+  src: url('/assets/fonts/Raleway-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway-Regular';
+  src: url('/assets/fonts/Raleway-Regular.ttf');
+}
+
+
+// media queries
+$mobile: "only screen and (max-width : 320px)";
+$large-mobile: "only screen and (max-width : 425px)";
+$tablet: "only screen and (max-width : 768px)";
+$small-laptop: "only screen and (max-width : 1024px)";
+
+
+// mixins
+@mixin box-shadow ($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin transition-duration ($duration) {
+  -webkit-transition-duration: $duration;
+  transition-duration: $duration;
+}

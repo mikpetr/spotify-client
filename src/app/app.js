@@ -1,13 +1,15 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import AppComponent from './app.component';
+import components from './components';
+import appComponent from './app.component';
 
 angular.module('app', [
-    uiRouter
+    uiRouter,
+    components
   ])
   .config($locationProvider => {
     'ngInject';
 
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
-  .component('app', AppComponent);
+  .component('app', appComponent);
