@@ -1,2 +1,18 @@
-<search-row></search-row>
-<search-list></search-list>
+<div class="search-row">
+  <form>
+    <div class="input-wrapper">
+      <input ng-model="sC.query"
+             type="text"
+             placeholder="Search for artist or album title" />
+      <button ng-click="sC.search()">Search</button>
+    </div>
+  </form>
+  <div ng-if="sC.isLoading" class="loader"></div>
+</div>
+
+<search-list list="sC.results.data"></search-list>
+
+<div ng-if="sC.results.existsMore" class="load-more-wrapper">
+  <button ng-click="sC.loadMore()">Show me more!</button>
+  <div ng-if="sC.isLoading" class="loader"></div>
+</div>

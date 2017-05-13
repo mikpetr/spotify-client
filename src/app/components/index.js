@@ -3,7 +3,7 @@ import headerComponent from './header/header.component';
 import footerComponent from './footer/footer.component';
 import searchModule from './search/search.module';
 
-let componentsModule = angular.module('app.components', [searchModule.name]);
+let componentsModule = angular.module('app.components', [searchModule]);
 
 componentsModule
   .component('header', headerComponent)

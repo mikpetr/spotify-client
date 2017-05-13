@@ -6,7 +6,10 @@ let searchListComponent = {
   template,
   controller,
   controllerAs: 'sL',
-  restrict: 'E'
+  restrict: 'E',
+  bindings: {
+    list: '='
+  }
 };
 
 export default searchListComponent;

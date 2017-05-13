@@ -1,8 +1,11 @@
 import template from './search.html';
+import controller from './search.controller';
 import './search.scss';
 
 let searchComponent = {
-  template: template,
+  template,
+  controller: controller,
+  controllerAs: 'sC',
   restrict: 'E'
 };
 

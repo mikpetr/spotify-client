@@ -4,7 +4,7 @@ import './search-item.scss';
 
 let searchItemComponent = {
   template,
-  controller,
+  controller: controller,
   controllerAs: 'sI',
   restrict: 'E',
   bindings: {

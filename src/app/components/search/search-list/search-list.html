@@ -1,12 +1,9 @@
-<!--<div class="initial-screen">
+<div class="initial-screen" ng-if="!sL.list.length">
   <i class="search-icon"></i>
-  <span>Your results will appear here</span>
-</div>-->
-<div class="results">
-  <search-item ng-repeat="item in sL.searchResult" item="item"></search-item>
-  <!--<search-item></search-item>
-  <search-item></search-item>
-  <search-item></search-item>
-  <search-item></search-item>
-  <search-item></search-item>-->
+  <span ng-if="!sL.list">Your results will appear here</span>
+  <span ng-if="sL.list">Nothing found for this query...</span>
+  
+</div>
+<div class="results" ng-if="sL.list.length">
+  <search-item ng-repeat="item in sL.list" item="item"></search-item>
 </div>

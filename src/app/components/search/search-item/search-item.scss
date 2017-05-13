@@ -98,6 +98,9 @@ search-item {
       font-family: 'Raleway-SemiBold';
       padding: 0 20px;
       color: #383A49;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       @media #{$large-mobile} {
         height: 80px;
