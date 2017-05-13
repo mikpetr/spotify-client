@@ -1,17 +1,12 @@
 import angular from 'angular';
-import headerComponent from './header';
-import searchRowComponent from './search-row';
-import searchListComponent from './search-list';
-import searchItemComponent from './search-item';
-import footerComponent from './footer';
+import headerComponent from './header/header.component';
+import footerComponent from './footer/footer.component';
+import searchModule from './search/search.module';
 
-let componentsModule = angular.module('app.components', []);
+let componentsModule = angular.module('app.components', [searchModule.name]);
 
 componentsModule
   .component('header', headerComponent)
-  .component('searchRow', searchRowComponent)
-  .component('searchList', searchListComponent)
-  .component('searchItem', searchItemComponent)
   .component('footer', footerComponent);
 
 export default componentsModule.name;
