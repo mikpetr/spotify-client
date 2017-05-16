@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
-    "angular-ui-router": "^1.0.0"
+    "angular-ui-router": "^1.0.0",
+    "ng-dialog": "^1.1.0"
   }
 }

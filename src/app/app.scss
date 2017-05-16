@@ -1,11 +1,21 @@
+@import '../../node_modules/ng-dialog/css/ngDialog.min.css';
+@import '../../node_modules/ng-dialog/css/ngDialog-theme-default.min.css';
+
 body {
   margin: 0;
 
   app {
     display: block;
+  }
 
-    input, button {
-      outline: none;
+  input, button {
+    outline: none;
+  }
+
+  .ngdialog-content {
+    button.ngdialog-close {
+      border: none;
+      padding: 0;
     }
   }
 }

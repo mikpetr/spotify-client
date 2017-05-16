@@ -33,3 +33,11 @@ $small-laptop: "only screen and (max-width : 1024px)";
   -webkit-transition-duration: $duration;
   transition-duration: $duration;
 }
+
+@mixin filter ($filter) {
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+  -o-filter: $filter;
+  -ms-filter: $filter;
+  filter: $filter;
+}

@@ -1,0 +1,25 @@
+<div class="cover">
+  <div class="image" ng-style="{ 'background-image': 'url('+sIDC.item.image+')' }"></div>
+  <h1 class="title">
+    <div class="title-heading" ng-if="sIDC.item.type === 'artist'">Albums by</div>
+    <div class="title-heading" ng-if="sIDC.item.type === 'album'">Tracks on</div>
+    <span>{{sIDC.item.name}}</span>
+    </h1>
+</div>
+<div class="subitems-list-wrapper">
+  <h2>
+    <span ng-if="sIDC.item.type === 'artist'">Albums</span>
+    <span ng-if="sIDC.item.type === 'album'">Tracks</span>
+  </h2>
+  <ul>
+    <li ng-repeat="item in sIDC.items" ng-class="{ 'no-image': sIDC.item.type === 'album' }">
+      <div class="image" style="background-image: url('{{item.image}}')"></div>
+      <div class="info">
+        <div class="name">{{item.name}}</div>
+        <div class="details" ng-if="sIDC.item.type === 'artist'">{{item.details.release_date | date : 'yyyy'}}</div>
+        <div class="details" ng-if="sIDC.item.type === 'album'">{{item.duration_ms | date : 'mm:ss'}}</div>
+      </div>
+    </li>
+  </ul>
+</div>
+

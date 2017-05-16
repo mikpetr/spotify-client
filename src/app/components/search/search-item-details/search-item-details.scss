@@ -1,0 +1,203 @@
+.ngdialog.ngdialog-theme-default.search-item-details {
+  .ngdialog-content {
+    border-radius: 3px;
+    max-width: 750px;
+    width: 90%;
+    padding: 0;
+    @include box-shadow(0px 2px 20px 0px rgba(0, 0, 0, 0.67));
+    background-color: white;
+
+    @media #{$large-mobile} {
+      padding: 20px;
+    }
+
+    button.ngdialog-close::before {
+      content: "";
+      background: url('/assets/images/Cross@2x.png') no-repeat center center;
+      background-size: contain;
+      top: 30px;
+      right: 30px;
+      
+      @media #{$large-mobile} {
+        top: 17px;
+        right: 18px;
+        background-image: url('/assets/images/Cross Dark@2x.png');
+        width: 16px;
+        height: 15px;
+      }
+    }
+
+    .cover {
+      height: 320px;
+      position: relative;
+
+      @media #{$small-laptop} {
+        display: flex;
+        height: 280px;
+      }
+
+      @media #{$tablet} {
+        height: 220px;
+      }
+
+      @media #{$large-mobile} {
+        height: auto;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #F5F5F6;
+        margin-bottom: 20px;
+      }
+
+      .image {
+        width: 100%;
+        height: inherit;
+        background: no-repeat center center;
+        background-size: cover;
+
+        @media #{$large-mobile} {
+          width: 60px;
+          height: 60px;
+          margin-right: 10px;
+        }
+      }
+
+      .title {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        margin: 0;
+        font-size: 36px;
+        line-height: 40px;
+        font-family: 'Raleway-SemiBold';
+        color: white;
+        text-shadow: 0px 2px 7px rgb(0, 0, 0);
+
+        @media #{$large-mobile} {
+          font-size: 18px;
+          line-height: 21px;
+          position: static;
+          left: auto;
+          bottom: auto;
+          color: #3A3B46;
+          text-shadow: none;
+        }
+      }
+
+      .title-heading {
+        display: none;
+        color: #6D6F7F;
+        font-family: 'Raleway-Regular';
+        font-weight: 100;
+        font-size: 18px;
+        line-height: 22px;
+        padding-bottom: 2px;
+
+        @media #{$large-mobile} {
+          display: block;
+        }
+      }
+    }
+
+    .subitems-list-wrapper {
+      padding: 30px;
+      color: #3A3B46;
+
+      @media #{$large-mobile} {
+        padding: 0;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 21px;
+        font-family: 'Raleway-SemiBold';
+        padding-bottom: 25px;
+        border-bottom: 1px solid #F5F5F6;
+
+        @media #{$large-mobile} {
+          display: none;
+        }
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: flex;
+          margin-top: 25px;
+
+          @media #{$large-mobile} {
+            margin-top: 15px;
+          }
+
+          .image {
+            width: 100px;
+            height: 100px;
+            background: no-repeat center center;
+            background-size: cover;
+
+            @media #{$large-mobile} {
+              display: none;
+            }
+          }
+
+          &.no-image {
+            .image {
+              display: none;
+            }
+
+            .info {
+              width: 100%;
+              padding-left: 0;
+            }
+          }
+
+
+          .info {
+            padding-left: 20px;
+            padding-top: 10px;
+            width: calc(100% - 100px);
+            box-sizing: border-box;
+
+            @media #{$large-mobile} {
+              padding-left: 0;
+              padding-top: 0;
+              width: 100%;
+            }
+
+            .name {
+              font-size: 24px;
+              font-family: 'Raleway-SemiBold';
+              color: #3A3B46;
+              line-height: 29px;
+              margin-bottom: 10px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+
+              @media #{$large-mobile} {
+                font-size: 18px;
+                line-height: 21px;
+                margin-bottom: 5px;
+                white-space: normal;
+              }
+            }
+
+            .details {
+              font-size: 18px;
+              font-family: 'Raleway-Regular';
+              line-height: 21px;
+              color: #6D6F7F;
+
+              @media #{$large-mobile} {
+                font-size: 14px;
+                line-height: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,5 +5,5 @@
   
 </div>
 <div class="results" ng-if="sL.list.length">
-  <search-item ng-repeat="item in sL.list" item="item"></search-item>
+  <search-item ng-repeat="item in sL.list" item="item" ng-click="sL.openDetails(item)"></search-item>
 </div>

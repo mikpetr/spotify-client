@@ -120,11 +120,11 @@ search-item {
       }
 
       .cover-image {
-        filter: blur(7px);
+        @include filter(blur(7px));
         transform: scale(1.05);
 
         @media #{$large-mobile} {
-          filter: blur(0);
+          @include filter(blur(0));
           transform: scale(1);
         }
       }
