@@ -21,3 +21,16 @@ For Building
 ```
 $ npm run build
 ```
+
+For Testing
+```
+$ npm install -g karma-cli
+```
+```
+$ npm test
+```
+
+For testing in development mode run
+```
+$ karma start
+```

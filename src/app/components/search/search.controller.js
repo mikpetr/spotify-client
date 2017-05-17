@@ -1,6 +1,7 @@
 class SearchController {
-  constructor (SearchFactory) {
+  constructor (SearchFactory, $q) {
     this._SearchFactory = SearchFactory;
+    this._$q = $q;
     
     this._offsetPerType = 0;
     this._limitPerType = 6;
@@ -16,16 +17,18 @@ class SearchController {
 
   search () {
     if (!this.query) {
-      return;
+      return this._$q.reject();
     }
 
     this._offsetPerType = 0;
     this.isLoading = true;
 
-    this._SearchFactory.search(this.query, 0, this._limitPerType).then(res => {
+    return this._SearchFactory.search(this.query, 0, this._limitPerType).then(res => {
       this.results = res;
     }, err => {
       console.log('Failed to search!');
+      this.results.data = [];
+      this.results.existsMore = false;
     }).finally(() => {
       this.isLoading = false;
     });
@@ -35,7 +38,7 @@ class SearchController {
     this._offsetPerType += this._limitPerType;
     this.isLoading = true;
 
-    this._SearchFactory
+    return this._SearchFactory
         .search(this.query, this._offsetPerType, this._limitPerType)
         .then(res => {
           this.results.data = [...this.results.data, ...res.data];
