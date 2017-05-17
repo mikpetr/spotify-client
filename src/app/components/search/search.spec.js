@@ -1,127 +1,86 @@
 describe('controller: search', () => {
   let controller;
-  let SearchFactory;
-  let deferred;
+  let fakeSearchFactory;
+  let $rootScope;
 
   beforeEach(module('app'));
 
-  beforeEach(() => {
-    // deferred = $q.defer();
-
-    let mockSearchFactory = function () {
-      return {
-        search: () => 'aa'
+  beforeEach(module($provide => {
+    $provide.factory('SearchFactory', () => {
+      fakeSearchFactory = {
+        search: () => Promise.resolve({
+          data: [{}],
+          existsMore: true
+        })
       };
-    };
 
-    // SearchFactory = $provide.factory('SearchFactory', {
-    //   search: () => {
-    //     return deferred.promise;
-    //   }
-    // });
-
-    module($provide => {
-      $provide.factory('SearchFactory', mockSearchFactory)
+      return fakeSearchFactory;
     });
-    
+  }));
+
+  beforeEach(inject((_$rootScope_, $componentController) => {
+    $rootScope = _$rootScope_;
+    controller = $componentController('search');
+  }));
+
+
+  it('should de defined', () => {
+    expect(controller).toBeDefined();
   });
 
 
-  // it('should de defined', () => {
-  //   expect(controller).toBeDefined();
-  // });
+  it('should search for artists and albums', () => {
+    
+    spyOn(fakeSearchFactory, 'search').and.callThrough();
+
+    controller.query = 'Jazz';
+    controller.search();
+
+    expect(fakeSearchFactory.search).toHaveBeenCalledWith(controller.query, 0, controller._limitPerType);
+  });
 
 
-  // it('should search for artists and albums', () => {
-  //   controller.query = 'Jazz';
-  //   controller.search();
+  it('should not search if query is empty or null', () => {
+    
+    spyOn(fakeSearchFactory, 'search').and.callThrough();
 
-  //   expect(SearchFactory.search).toHaveBeenCalledWith(controller.query, 0, controller._limitPerType);
-  // });
+    controller.search();
+    expect(fakeSearchFactory.search).not.toHaveBeenCalled();
 
-
-  // it('should not search if query is empty or null', () => {
-  //   controller.search();
-  //   expect(SearchFactory.search).not.toHaveBeenCalled();
-
-  //   controller.query = '';
-  //   controller.search();
-  //   expect(SearchFactory.search).not.toHaveBeenCalled();
-  // });
+    controller.query = '';
+    controller.search();
+    expect(fakeSearchFactory.search).not.toHaveBeenCalled();
+  });
 
 
   it('should overwrite old search results when make a new search', (done) => {
+    
+    controller.query = 'Jazz';
+    controller.search().then(() => {
+      let oldSearchResults = controller.results.data;
 
-    inject($componentController => {
-      let controller = $componentController('search');
-      console.log(controller.search().catch(() => {
-        
-        console.log('a');
+      controller.query = 'Marcus Miller';
+      controller.search().then(() => {
+        expect(oldSearchResults).not.toBe(controller.results.data);
         done();
-      }));
-      // controller.query = 'Jazz';
-      // console.log(controller.search());
-      
-      
+      });
     });
 
-    
-
-    
-
-    // inject((SearchFactory, $componentController) => {
-    //   let controller = $componentController('search');
-      
-    //   let a = SearchFactory.search().then(() => {
-    //     console.log(deferred.promise === a);
-
-    //     done();
-    //   });
-    // });
-
-    // let deferred = $q.defer();
-    
-    // spyOn(SearchFactory, 'search').and.returnValue(deferred.promise);
-
-
-    // controller.query = 'Marcus Miller';
-    
-    // let a = controller.search().then(() => {
-
-    //   console.log('controller.results');
-    //   expect(2).toBe(2);
-      
-    //   done();
-      
-    //   // let oldSearchResults = controller.results.data;
-
-    //   // controller.query = 'Jon Lord';
-    //   // controller.search().then(() => {
-        
-    //   //   expect(controller.results.data).not.toBe(oldSearchResults);
-    //   // });
-    // });
-    // console.log(a === deferred.promise);
-    // deferred.resolve({
-    //   items: [{}]
-    // });
-    
-    
+    $rootScope.$digest();
   });
 
-  // it('should load more results', () => {
-  //   let ctrl = $componentController('search', null);
+  it('should load more results', (done) => {
 
-  //   ctrl.query = 'asdaffdfvdfererergerg th dthrt hdthd rth d'; // Barefoot on the beach
-  //   console.log(ctrl.query);
-  //   ctrl.search().finally(() => {
-  //     console.log('aa');
-  //     let oldSearchItemsLength = ctrl.results.data.length;
-  //     console.log('a', oldSearchItemsLength);
+    controller.query = 'Barefoot on the beach';
+    controller.search().then(() => {
+      let oldSearchItemsLength = controller.results.data.length;
+      
+      controller.loadMore().then(() => {
+        expect(controller.results.data.length).toBeGreaterThan(oldSearchItemsLength);
+        done();
+      });
+    });
 
-  //     ctrl.loadMore().finally(() => {
-  //       expect(ctrl.results.data.length).toBeGreaterThan(oldSearchItemsLength);
-  //     });
-  //   });
-  // });
+    $rootScope.$digest();
+  });
 });
