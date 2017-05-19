@@ -1,7 +1,6 @@
 class SearchController {
-  constructor (SearchFactory, $q) {
+  constructor (SearchFactory) {
     this._SearchFactory = SearchFactory;
-    this._$q = $q;
     
     this._offsetPerType = 0;
     this._limitPerType = 6;

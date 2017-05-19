@@ -69,6 +69,7 @@ describe('controller: search', () => {
     $rootScope.$digest();
   });
 
+
   it('should load more results', (done) => {
 
     controller.query = 'Barefoot on the beach';

@@ -1,12 +1,11 @@
 class SearchItemDetailsController {
-  constructor (searchItem, SearchFactory) {
-    console.log(searchItem);
-    this.item = searchItem;
+  constructor (searchItem, SearchFactory, $scope) {
 
+    this.item = searchItem;
     this.item.image = this.item.images[0] ? this.item.images[0].url : '/assets/images/default-cover.png';
 
     this.tracks = [];
-
+    
     let promise;
     
     if (searchItem.type === 'album') {
@@ -16,10 +15,10 @@ class SearchItemDetailsController {
     }
 
     promise.then(res => {
-      console.log(res);
       this.items = res.data.items;
+      $scope.$digest();
     }, err => {
-      console.log('Failed to load tracks');
+      console.log('Failed to load');
     });
   }
 }
