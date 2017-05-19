@@ -1,6 +1,6 @@
 let SearchFactory = function (apiUrl, $http, $q) {
 
-  function search (query, offset, limit) {
+  function search (query, offset = 0, limit = 6) {
     return $http.get(`${apiUrl}/search`, {
       params: {
         type: 'artist,album',
@@ -36,37 +36,31 @@ let SearchFactory = function (apiUrl, $http, $q) {
   }
 
   function getAlbums (artistId, offset = 0, limit = 5) {
-    let deferred = $q.defer();
-
-    $http.get(`${apiUrl}/artists/${artistId}/albums`, {
-      params: {
-        offset,
-        limit
-      }
-    }).then(res => {
-      let promises = [];
-
-      res.data.items.forEach(album => {
-        if (album.images.length) {
-          let preferredImage = album.images.find(image => image.width === 300);
-          album.image = preferredImage ? preferredImage.url : '/assets/images/default-cover.png';
+    return new Promise((resolve, reject) => {
+      $http.get(`${apiUrl}/artists/${artistId}/albums`, {
+        params: {
+          offset,
+          limit
         }
+      }).then(res => {
+        let promises = [];
 
-        promises.push(getAlbumDetails(album.id).then(res => {
-          album.details = res.data;
-        }));
-      });
+        res.data.items.forEach(album => {
+          if (album.images.length) {
+            let preferredImage = album.images.find(image => image.width === 300);
+            album.image = preferredImage ? preferredImage.url : '/assets/images/default-cover.png';
+          }
 
-      $q.all(promises).then(() => {
-        deferred.resolve(res);
-      }, err => {
-        deferred.reject(err);
-      });
-    }, err => {
-      deferred.reject(err);
+          promises.push(getAlbumDetails(album.id).then(res => {
+            album.details = res.data;
+          }));
+        });
+        
+        $q.all(promises).then(() => {
+          resolve(res);
+        }, reject);
+      }, reject);
     });
-
-    return deferred.promise;
   }
 
   function getAlbumDetails (albumId) {

@@ -16,17 +16,19 @@ class SearchController {
 
   search () {
     if (!this.query) {
-      return;
+      return Promise.reject();
     }
 
     this._offsetPerType = 0;
     this.isLoading = true;
 
-    this._SearchFactory.search(this.query, 0, this._limitPerType).then(res => {
+    return this._SearchFactory.search(this.query, 0, this._limitPerType).then(res => {
       this.results = res;
+      this.isLoading = false;
     }, err => {
       console.log('Failed to search!');
-    }).finally(() => {
+      this.results.data = [];
+      this.results.existsMore = false;
       this.isLoading = false;
     });
   }
@@ -35,17 +37,14 @@ class SearchController {
     this._offsetPerType += this._limitPerType;
     this.isLoading = true;
 
-    this._SearchFactory
-        .search(this.query, this._offsetPerType, this._limitPerType)
-        .then(res => {
-          this.results.data = [...this.results.data, ...res.data];
-          this.results.existsMore = res.existsMore;
-        }, err => {
-          console.log('Failed to load!');
-        })
-        .finally(() => {
-          this.isLoading = false;
-        });
+    return this._SearchFactory.search(this.query, this._offsetPerType, this._limitPerType).then(res => {
+      this.results.data = [...this.results.data, ...res.data];
+      this.results.existsMore = res.existsMore;
+      this.isLoading = false;
+    }, err => {
+      console.log('Failed to load!');
+      this.isLoading = false;
+    });
   }
 }
 
