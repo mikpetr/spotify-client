@@ -8,7 +8,7 @@ let searchListComponent = {
   controllerAs: 'sL',
   restrict: 'E',
   bindings: {
-    list: '='
+    list: '<'
   }
 };
 
