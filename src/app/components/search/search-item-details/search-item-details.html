@@ -1,5 +1,5 @@
 <div class="cover">
-  <div class="image" ng-style="{ 'background-image': 'url('+sIDC.item.image+')' }"></div>
+  <div class="image" ng-style="{ 'background-image': 'url(' + sIDC.item.largeImage + ')' }"></div>
   <h1 class="title">
     <div class="title-heading" ng-if="sIDC.item.type === 'artist'">Albums by</div>
     <div class="title-heading" ng-if="sIDC.item.type === 'album'">Tracks on</div>
@@ -13,7 +13,7 @@
   </h2>
   <ul>
     <li ng-repeat="item in sIDC.items" ng-class="{ 'no-image': sIDC.item.type === 'album' }">
-      <div class="image" style="background-image: url('{{item.image}}')"></div>
+      <div class="image" style="background-image: url('{{item.smallImage}}')"></div>
       <div class="info">
         <div class="name">{{item.name}}</div>
         <div class="details" ng-if="sIDC.item.type === 'artist'">{{item.details.release_date | date : 'yyyy'}}</div>

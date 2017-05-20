@@ -62,7 +62,7 @@ describe('factory: search', () => {
   });
 
 
-  it('should set image property for every found item when calling search method', () => {
+  it('should set images aliases for every found item when calling search method', () => {
     $httpBackend
       .expectRoute('GET', `${apiUrl}/search`)
       .respond({
@@ -84,7 +84,8 @@ describe('factory: search', () => {
 
     SearchFactory.search('Jazz').then(res => {
       res.data.forEach(item => {
-        expect(item.image).toBeDefined();
+        expect(item.smallImage).toBeDefined();
+        expect(item.largeImage).toBeDefined();
       });
     });
 
