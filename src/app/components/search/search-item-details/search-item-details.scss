@@ -11,12 +11,14 @@
       padding: 20px;
     }
 
-    button.ngdialog-close::before {
-      content: "";
+    button.ngdialog-close {
       background: url('/assets/images/Cross@2x.png') no-repeat center center;
       background-size: contain;
-      top: 30px;
-      right: 30px;
+      top: 26px;
+      right: 26px;
+      display: block;
+      width: 28px;
+      height: 28px;
       
       @media #{$large-mobile} {
         top: 17px;
@@ -24,6 +26,10 @@
         background-image: url('/assets/images/Cross Dark@2x.png');
         width: 16px;
         height: 15px;
+      }
+      
+      &::before {
+        display: none;
       }
     }
 

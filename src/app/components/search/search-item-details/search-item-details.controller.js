@@ -1,5 +1,5 @@
 class SearchItemDetailsController {
-  constructor (searchItem, SearchFactory) {
+  constructor (searchItem, SearchFactory, toastr) {
 
     this.item = searchItem;
     this.tracks = [];
@@ -14,7 +14,7 @@ class SearchItemDetailsController {
     promise.then(res => {
       this.items = res.data.items;
     }, err => {
-      console.log('Failed to load');
+      toastr.error('Failed to load details. Please try again!', 'Error');
     });
   }
 }

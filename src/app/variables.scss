@@ -20,6 +20,7 @@ $mobile: "only screen and (max-width : 320px)";
 $large-mobile: "only screen and (max-width : 425px)";
 $tablet: "only screen and (max-width : 768px)";
 $small-laptop: "only screen and (max-width : 1024px)";
+$ie: "screen and (-ms-high-contrast: active), (-ms-high-contrast: none)";
 
 
 // mixins
@@ -40,4 +41,14 @@ $small-laptop: "only screen and (max-width : 1024px)";
   -o-filter: $filter;
   -ms-filter: $filter;
   filter: $filter;
+}
+
+@mixin ms-browser {
+  @media #{$ie} {
+    @content;
+  }
+
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
 }

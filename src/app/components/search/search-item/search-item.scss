@@ -51,6 +51,22 @@ search-item {
         }
       }
 
+      @include ms-browser {
+        &::before {
+          content: "";
+          display: block;
+          opacity: 0;
+          width: 100%;
+          height: inherit;
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 1;
+          background-color: rgba(0, 0, 0, 0.7);
+          @include transition-duration(0.5s);
+        }
+      }
+
       .cover-image {
         background: no-repeat center center;
         background-size: cover;
@@ -66,6 +82,7 @@ search-item {
         width: 100%;
         margin-top: -60px;
         opacity: 0;
+        z-index: 2;
         @include transition-duration(0.5s);
 
         @media #{$large-mobile} {
@@ -119,9 +136,19 @@ search-item {
         }
       }
 
+      @include ms-browser {
+        &::before {
+          opacity: 1
+        }
+      }
+
       .cover-image {
         @include filter(blur(7px));
         transform: scale(1.05);
+
+        @include ms-browser {
+          transform: scale(1);
+        }
 
         @media #{$large-mobile} {
           @include filter(blur(0));

@@ -41,7 +41,10 @@
   },
   "dependencies": {
     "angular": "1.6.4",
+    "angular-animate": "1.6.4",
+    "angular-toastr": "2.1.1",
     "angular-ui-router": "1.0.0",
+    "babel-polyfill": "6.23.0",
     "ng-dialog": "1.1.0"
   }
 }
