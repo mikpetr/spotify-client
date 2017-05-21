@@ -71,7 +71,7 @@ module.exports = {
         from: 'src/assets/',
         to: 'assets/'
       }, {
-        from: 'src/app/service-worker.js',
+        from: 'src/service-worker.js',
         to: 'service-worker.js'
       }
     ])

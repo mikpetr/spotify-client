@@ -33,6 +33,6 @@ angular.module('app', [
 
 
 // Add service worker for caching app
-if ('serviceWorker' in navigator) {
+if (typeof jasmine === 'undefined' && 'serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
