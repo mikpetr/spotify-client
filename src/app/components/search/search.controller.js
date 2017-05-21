@@ -1,25 +1,32 @@
 class SearchController {
-  constructor (SearchFactory, $q, toastr) {
+  constructor (SearchFactory, $q, toastr, $location) {
     this._SearchFactory = SearchFactory;
     this._$q = $q;
     this._toastr = toastr;
+    this._$location = $location;
     
     this._offsetPerType = 0;
     this._limitPerType = 6;
 
-    this.query = null;
+    this.query = $location.search().query || null;
     this.isLoading = false;
 
     this.results = {
       data: null,
       existsMore: false
     };
+
+    if (this.query) {
+      this.search();
+    }
   }
 
   search () {
     if (!this.query) {
       return this._$q.reject();
     }
+
+    this._$location.search('query', this.query);
 
     this._offsetPerType = 0;
     this.isLoading = true;

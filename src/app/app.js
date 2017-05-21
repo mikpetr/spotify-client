@@ -1,5 +1,5 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import ngDialog from 'ng-dialog';
 import ngAnimate from 'angular-animate';
 import toastr from 'angular-toastr';
@@ -15,9 +15,18 @@ angular.module('app', [
     components,
     constants
   ])
-  .config($locationProvider => {
+  .config(($locationProvider, $stateProvider, $urlRouterProvider) => {
     'ngInject';
 
     $locationProvider.html5Mode(true).hashPrefix('!');
+
+    $stateProvider.state({
+      name: 'search',
+      url: '/',
+      template: '<search></search>',
+      reloadOnSearch: false
+    });
+
+    $urlRouterProvider.otherwise('/');
   })
   .component('app', appComponent);
