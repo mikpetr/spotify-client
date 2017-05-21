@@ -30,3 +30,9 @@ angular.module('app', [
     $urlRouterProvider.otherwise('/');
   })
   .component('app', appComponent);
+
+
+// Add service worker for caching app
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
