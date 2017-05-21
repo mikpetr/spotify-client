@@ -2,10 +2,15 @@ import searchItemDetailsTemplate from '../search-item-details/search-item-detail
 import searchItemDetailsController from '../search-item-details/search-item-details.controller';
 
 class SearchListController {
+
   constructor (ngDialog) {
     this._ngDialog = ngDialog;
   }
 
+  /**
+   * Open details dialog
+   * @param {object} item - Artist or album object
+   */
   openDetails (item) {
     this._ngDialog.open({
       template: searchItemDetailsTemplate,

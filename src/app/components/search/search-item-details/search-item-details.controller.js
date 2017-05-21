@@ -1,10 +1,16 @@
+/**
+ * @desc - This component is for item details dialog window
+ */
 class SearchItemDetailsController {
   constructor (searchItem, SearchFactory, toastr) {
 
     this.item = searchItem;
     this.tracks = [];
     let promise;
-    
+
+    /**
+     * @desc - Get additional information like album tracks or artist albums
+     */
     if (searchItem.type === 'album') {
       promise = SearchFactory.getTracks(searchItem.id);
     } else {

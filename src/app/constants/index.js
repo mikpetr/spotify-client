@@ -1,5 +1,8 @@
 import angular from 'angular';
 
+/**
+ * @desc - This module for defining constants.
+ */
 let constantsModule = angular.module('app.constants', []);
 
 constantsModule

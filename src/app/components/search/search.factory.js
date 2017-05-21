@@ -1,5 +1,10 @@
 let SearchFactory = function (apiUrl, $http, $q, defaultImageUrl) {
 
+  /**
+   * @param {string} query - Text for searching
+   * @param {number} offset - Start index of searching per type
+   * @param {number} limit - Count of items per type
+   */
   function search (query, offset = 0, limit = 6) {
     return $http.get(`${apiUrl}/search`, {
       params: {
@@ -20,6 +25,11 @@ let SearchFactory = function (apiUrl, $http, $q, defaultImageUrl) {
     });
   }
 
+  /**
+   * @param {number} albumId - Id of album
+   * @param {number} offset - Start index
+   * @param {number} limit - Count
+   */
   function getTracks (albumId, offset = 0, limit = 5) {
     return $http.get(`${apiUrl}/albums/${albumId}/tracks`, {
       params: {
@@ -29,6 +39,11 @@ let SearchFactory = function (apiUrl, $http, $q, defaultImageUrl) {
     });
   }
 
+  /**
+   * @param {number} artistId - Id of artist
+   * @param {number} offset - Start index
+   * @param {number} limit - Count
+   */
   function getAlbums (artistId, offset = 0, limit = 5) {
     return $q((resolve, reject) => {
       $http.get(`${apiUrl}/artists/${artistId}/albums`, {
@@ -54,10 +69,16 @@ let SearchFactory = function (apiUrl, $http, $q, defaultImageUrl) {
     });
   }
 
+  /**
+   * @param {number} albumId - Id of album
+   */
   function getAlbumDetails (albumId) {
     return $http.get(`${apiUrl}/albums/${albumId}`);
   }
 
+  /**
+   * @param {object} item - Search item or album
+   */
   function createImagesAliases (item) {
     item.images.sort((a, b) => a.width > b.width ? 1 : -1);
 
