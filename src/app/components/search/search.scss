@@ -3,7 +3,7 @@ search {
   background-color: #383A49;
   
   .search-row {
-    background-color: #333441;
+    background-color: $highlight-row-color;
     padding: 15px 0;
     position: relative;
 
@@ -30,24 +30,8 @@ search {
           line-height: 48px;
           font-size: 16px;
           font-family: 'Raleway-SemiBold';
-          color: #7F6C6C;
-
-          $placeholder-color: #7F6C6C;
-
-          &::-webkit-input-placeholder { /* Chrome */
-            color: $placeholder-color;
-          }
-          &:-ms-input-placeholder { /* IE 10+ */
-            color: $placeholder-color;
-          }
-          &::-moz-placeholder { /* Firefox 19+ */
-            color: $placeholder-color;
-            opacity: 1;
-          }
-          &:-moz-placeholder { /* Firefox 4 - 18 */
-            color: $placeholder-color;
-            opacity: 1;
-          }
+          color: $input-color;
+          @include placeholder-color($input-color);
 
           @media #{$tablet} {
             font-size: 15px;
@@ -61,7 +45,7 @@ search {
         button {
           width: 120px;
           height: 40px;
-          background-color: #D05D84;
+          background-color: $button-color;
           color: white;
           border: none;
           font-size: 16px;
@@ -146,7 +130,7 @@ search {
       width: 180px;
       height: 40px;
       border: none;
-      background-color: #D05D84;
+      background-color: $button-color;
       border-radius: 20px;
       font-size: 16px;
       font-family: 'Raleway-SemiBold';

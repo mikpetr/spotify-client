@@ -49,7 +49,7 @@
       @media #{$large-mobile} {
         height: auto;
         padding-bottom: 20px;
-        border-bottom: 1px solid #F5F5F6;
+        border-bottom: 1px solid $separator-color;
         margin-bottom: 20px;
       }
 
@@ -83,7 +83,7 @@
           position: static;
           left: auto;
           bottom: auto;
-          color: #3A3B46;
+          color: $dark-text-color;
           text-shadow: none;
           width: calc(100% - 70px);
         }
@@ -106,7 +106,7 @@
 
     .subitems-list-wrapper {
       padding: 30px;
-      color: #3A3B46;
+      color: $dark-text-color;
 
       @media #{$large-mobile} {
         padding: 0;
@@ -118,7 +118,7 @@
         line-height: 21px;
         font-family: 'Raleway-SemiBold';
         padding-bottom: 25px;
-        border-bottom: 1px solid #F5F5F6;
+        border-bottom: 1px solid $separator-color;
 
         @media #{$large-mobile} {
           display: none;
@@ -176,7 +176,7 @@
             .name {
               font-size: 24px;
               font-family: 'Raleway-SemiBold';
-              color: #3A3B46;
+              color: $dark-text-color;
               line-height: 29px;
               margin-bottom: 10px;
               text-overflow: ellipsis;
