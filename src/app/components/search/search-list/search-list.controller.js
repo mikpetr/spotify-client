@@ -2,6 +2,7 @@ import searchItemDetailsTemplate from '../search-item-details/search-item-detail
 import SearchItemDetailsController from '../search-item-details/search-item-details.controller';
 
 class SearchListController {
+  /*@ngInject*/
 
   constructor (ngDialog) {
     this._ngDialog = ngDialog;

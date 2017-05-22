@@ -1,4 +1,6 @@
 class SearchController {
+  /*@ngInject*/
+  
   constructor (SearchFactory, $q, toastr, $location) {
     this._SearchFactory = SearchFactory;
     this._$q = $q;

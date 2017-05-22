@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start --single-run",
     "start": "webpack-dev-server --content-base src --hot --inline --open",
-    "build": "webpack"
+    "build": "webpack --optimize-minimize"
   },
   "repository": {
     "type": "git",
@@ -33,9 +33,11 @@
     "karma-chrome-launcher": "2.1.1",
     "karma-jasmine": "1.1.0",
     "karma-webpack": "2.0.3",
+    "ng-annotate-webpack-plugin": "0.2.1-pre",
     "node-sass": "4.5.2",
     "sass-loader": "6.0.3",
     "style-loader": "0.17.0",
+    "sw-precache-webpack-plugin": "0.9.2",
     "webpack": "2.5.0",
     "webpack-dev-server": "2.4.5"
   },

@@ -16,6 +16,7 @@ angular.module('app', [
     constants
   ])
   .config(($locationProvider, $stateProvider, $urlRouterProvider) => {
+    'ngInject';
 
     /**
      * @desc - Disable "#" symbol before route
@@ -36,10 +37,11 @@ angular.module('app', [
 /**
  * @description
  * Adding service worker for caching app.
- * We don't need to cache app in testing mode.
+ * We don't need to cache app in testing and development mode.
  * Variable "jasmine" only exists in testing mode.
- * So we run service worker only when "jasmine" is not defined
+ * Variable "webpackHotUpdate" only exists in development mode.
+ * So we run service worker only when "jasmine" and "webpackHotUpdate" are not defined
  */
-if (typeof jasmine === 'undefined' && 'serviceWorker' in navigator) {
+if (typeof jasmine === 'undefined' && typeof webpackHotUpdate === 'undefined' && 'serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }

@@ -1,4 +1,5 @@
 let SearchFactory = function (apiUrl, $http, $q, defaultImageUrl) {
+  'ngInject';
 
   /**
    * @param {string} query - Text for searching

@@ -2,6 +2,8 @@ const path = require('path');
 const package = require('./package.json'); // loads npm config file for injecting in vendor
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -30,7 +32,7 @@ module.exports = {
           {
             loader: 'html-loader',
             options: {
-              minimize: false
+              minimize: true
             }
           }
         ]
@@ -70,11 +72,22 @@ module.exports = {
       }, {
         from: 'src/assets/',
         to: 'assets/'
-      }, {
-        from: 'src/service-worker.js',
-        to: 'service-worker.js'
       }
-    ])
+    ]),
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'spotify-client-v1',
+      filename: 'service-worker.js',
+      maximumFileSizeToCacheInBytes: 4194304,
+      minify: true,
+      runtimeCaching: [{
+        handler: 'cacheFirst',
+        urlPattern: /dist\/[**/*]$/,
+      }],
+      ignoreUrlParametersMatching: [/query$/]
+    }),
+    new ngAnnotatePlugin({
+        add: true
+    })
   ],
   devServer: {
     stats: { colors: true },

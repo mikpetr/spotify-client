@@ -7,7 +7,8 @@ Application developed by using Angular.js 1.6.4.
 Whole application consists from components, so it will be easier to migrate to Angular 4.  
 For building process installed webpack which also provides web server for running app while developing.  
 Also integrated service worker which ensures fast loading application by using caching technique.  
-For testing used Jasmine and Karma.
+For testing used Jasmine and Karma.  
+Also application can be installed on Android devices as a Progressive Web App.
 
 
 ## Application structure

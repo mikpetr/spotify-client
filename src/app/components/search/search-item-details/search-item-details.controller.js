@@ -2,6 +2,8 @@
  * @desc - This component is for item details dialog window
  */
 class SearchItemDetailsController {
+  /*@ngInject*/
+  
   constructor (searchItem, SearchFactory, toastr) {
 
     this.item = searchItem;
