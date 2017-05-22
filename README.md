@@ -1,6 +1,7 @@
 # Spotify Client
 
-Simple Spotify client for searching
+Simple Spotify client for searching.  
+Live demo at <https://mikpetr.github.io>
 
 Application developed by using Angular.js 1.6.4.  
 Whole application consists from components, so it will be easier to migrate to Angular 4.  
