@@ -1,18 +1,18 @@
 import angular from 'angular';
-import searchComponent from './search.component';
+import SearchComponent from './search.component';
 import SearchFactory from './search.factory';
-import searchListComponent from './search-list/search-list.component';
-import searchItemComponent from './search-item/search-item.component';
+import SearchListComponent from './search-list/search-list.component';
+import SearchItemComponent from './search-item/search-item.component';
 
 /**
  * @desc - This module is for search functionality.
  */
-let searchModule = angular.module('app.components.search', []);
+let SearchModule = angular.module('app.components.search', []);
 
-searchModule
-  .component('search', searchComponent)
-  .component('searchList', searchListComponent)
-  .component('searchItem', searchItemComponent)
+SearchModule
+  .component('search', SearchComponent)
+  .component('searchList', SearchListComponent)
+  .component('searchItem', SearchItemComponent)
   .factory('SearchFactory', SearchFactory);
 
-export default searchModule.name;
+export default SearchModule.name;

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start --single-run",
-    "start": "webpack-dev-server --content-base src --hot --inline",
+    "start": "webpack-dev-server --content-base src --hot --inline --open",
     "build": "webpack"
   },
   "repository": {

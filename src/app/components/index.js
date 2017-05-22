@@ -1,12 +1,12 @@
 import angular from 'angular';
-import headerComponent from './header/header.component';
-import footerComponent from './footer/footer.component';
+import HeaderComponent from './header/header.component';
+import FooterComponent from './footer/footer.component';
 import searchModule from './search/search.module';
 
-let componentsModule = angular.module('app.components', [searchModule]);
+let ComponentsModule = angular.module('app.components', [searchModule]);
 
-componentsModule
-  .component('header', headerComponent)
-  .component('footer', footerComponent);
+ComponentsModule
+  .component('header', HeaderComponent)
+  .component('footer', FooterComponent);
 
-export default componentsModule.name;
+export default ComponentsModule.name;

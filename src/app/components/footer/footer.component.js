@@ -4,9 +4,9 @@ import './footer.scss';
 /**
  * @desc - This module is for application footer.
  */
-let footerComponent = {
+let FooterComponent = {
   template: template,
   restrict: 'E'
 };
 
-export default footerComponent;
+export default FooterComponent;

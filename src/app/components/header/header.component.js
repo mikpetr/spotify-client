@@ -4,9 +4,9 @@ import './header.scss';
 /**
  * @desc - This component is for application header.
  */
-let headerComponent = {
+let HeaderComponent = {
   template: template,
   restrict: 'E'
 };
 
-export default headerComponent;
+export default HeaderComponent;

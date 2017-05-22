@@ -3,10 +3,10 @@ import angular from 'angular';
 /**
  * @desc - This module for defining constants.
  */
-let constantsModule = angular.module('app.constants', []);
+let ConstantsModule = angular.module('app.constants', []);
 
-constantsModule
+ConstantsModule
   .constant('apiUrl', 'https://api.spotify.com/v1')
   .constant('defaultImageUrl', '/assets/images/default-cover.png');
 
-export default constantsModule.name;
+export default ConstantsModule.name;

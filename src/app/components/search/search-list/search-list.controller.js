@@ -1,5 +1,5 @@
 import searchItemDetailsTemplate from '../search-item-details/search-item-details.html';
-import searchItemDetailsController from '../search-item-details/search-item-details.controller';
+import SearchItemDetailsController from '../search-item-details/search-item-details.controller';
 
 class SearchListController {
 
@@ -14,7 +14,7 @@ class SearchListController {
   openDetails (item) {
     this._ngDialog.open({
       template: searchItemDetailsTemplate,
-      controller: searchItemDetailsController,
+      controller: SearchItemDetailsController,
       controllerAs: 'sIDC',
       resolve: {
         searchItem: () => item

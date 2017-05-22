@@ -6,9 +6,9 @@ import './app.scss';
  * This is the main component.
  * All applications wraps into app component.
  */
-let appComponent = {
+let AppComponent = {
   template: template,
   restrict: 'E'
 };
 
-export default appComponent;
+export default AppComponent;

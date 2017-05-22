@@ -2,7 +2,7 @@ import template from './search-list.html';
 import controller from './search-list.controller';
 import './search-list.scss';
 
-let searchListComponent = {
+let SearchListComponent = {
   template,
   controller,
   controllerAs: 'sL',
@@ -12,4 +12,4 @@ let searchListComponent = {
   }
 };
 
-export default searchListComponent;
+export default SearchListComponent;
